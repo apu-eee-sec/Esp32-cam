@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32-CAM WebRTC Stream</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ESP32-CAM WebRTC Stream</h1>
+    </header>
+    
+    <main>
+      <div class="stream-container">
+        <div id="stream-placeholder">
+          <div class="placeholder-content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video">
+              <path d="m22 8-6 4 6 4V8Z"/>
+              <rect width="14" height="12" x="2" y="6" rx="2" ry="2"/>
+            </svg>
+            <p>Stream not connected</p>
+          </div>
+        </div>
+        <video id="video-stream" autoplay playsinline style="display: none;"></video>
+        
+        <div class="controls">
+          <input type="text" id="camera-id" placeholder="Enter camera ID">
+          <button id="connect-btn">Connect</button>
+          <button id="fullscreen-btn">Fullscreen</button>
+        </div>
+        
+        <div class="status-container">
+          <div id="connection-status">Not connected</div>
+        </div>
+      </div>
+      
+      <div class="info-panel">
+        <h2>Connection Information</h2>
+        
+        <h3>How It Works</h3>
+        <p>This viewer uses WebRTC to connect directly to your ESP32-CAM without requiring port forwarding:</p>
+        <ol>
+          <li>Your ESP32-CAM connects to a signaling server and registers with a unique ID</li>
+          <li>Enter that ID in the field above and click "Connect"</li>
+          <li>The viewer establishes a peer-to-peer connection with your camera</li>
+          <li>Video streams directly from the camera to your browser</li>
+        </ol>
+        
+        <h3>Setup Instructions</h3>
+        <ol>
+          <li>Program your ESP32-CAM with the WebRTC firmware (see GitHub repository)</li>
+          <li>Power on your ESP32-CAM and connect it to WiFi</li>
+          <li>Note the camera ID displayed on the serial monitor</li>
+          <li>Enter that ID in the field above and click "Connect"</li>
+        </ol>
+      </div>
+    </main>
+    
+    <footer>
+      <p>ESP32-CAM WebRTC Stream Viewer | <a href="https://github.com/yourusername/esp32-cam-webrtc" target="_blank">GitHub Repository</a></p>
+    </footer>
+  </div>
+
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
